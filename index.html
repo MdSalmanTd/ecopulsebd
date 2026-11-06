@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoPulse BD — Home</title>
+  <link rel="icon" href="public/images/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+
+  <!-- ============ TOP NAV ============ -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="#" class="brand">
+        <img src="public/images/logo.svg" alt="" width="26" height="26" />
+        <span>EcoPulse <b>BD</b></span>
+      </a>
+
+      <nav class="mainnav" aria-label="Main">
+        <a href="#" class="active"><img class="ic" src="public/icons/home-active.svg" alt="" />Home</a>
+        <a href="#"><img class="ic" src="public/icons/map.svg" alt="" />Map</a>
+        <a href="#"><img class="ic" src="public/icons/flag.svg" alt="" />Missions</a>
+        <a href="#"><img class="ic" src="public/icons/alert.svg" alt="" />Reports</a>
+        <a href="#"><img class="ic" src="public/icons/gift.svg" alt="" />Rewards</a>
+        <a href="#"><img class="ic" src="public/icons/trophy.svg" alt="" />Leaders</a>
+      </nav>
+
+      <label class="search">
+        <img class="ic" src="public/icons/search.svg" alt="" />
+        <input type="search" placeholder="Search green missions" />
+      </label>
+
+      <div class="topbar__right">
+        <span class="pill pill--aqi"><span class="dot"></span>AQI 152 · Unhealthy</span>
+        <div class="lang"><button class="on">EN</button><button>বাং</button></div>
+        <button class="icon-btn" aria-label="Notifications"><img class="ic" src="public/icons/bell.svg" alt="" /><span class="badge"></span></button>
+        <img class="avatar avatar--sm" src="public/images/avatar-user.svg" alt="Mydia Rahman" />
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ============ LEFT SIDEBAR ============ -->
+    <aside class="sidebar sidebar--left">
+      <div class="card profile">
+        <div class="profile__head">
+          <img class="avatar" src="public/images/avatar-user.svg" alt="" />
+          <div>
+            <strong>Mydia Rahman</strong>
+            <small>Mirpur 10 · Dhaka</small>
+          </div>
+        </div>
+        <div class="level">
+          <div class="level__bar"><span style="width:62%"></span></div>
+          <small>LEVEL 4 · GREEN STEWARD</small>
+        </div>
+      </div>
+
+      <nav class="sidemenu">
+        <a href="#"><img class="ic" src="public/icons/user.svg" alt="" />Your profile</a>
+        <a href="#"><img class="ic" src="public/icons/bookmark.svg" alt="" />Saved posts</a>
+        <a href="#"><img class="ic" src="public/icons/flag.svg" alt="" />My missions <span class="count">2</span></a>
+        <a href="#"><img class="ic" src="public/icons/alert.svg" alt="" />My reports <span class="count">1</span></a>
+        <a href="#"><img class="ic" src="public/icons/chat.svg" alt="" />Ask the ecobot</a>
+        <a href="#"><img class="ic" src="public/icons/tool.svg" alt="" />Organizer tools</a>
+      </nav>
+
+      <div class="communities">
+        <h6>YOUR COMMUNITIES</h6>
+        <a href="#" class="community"><span class="sq sq--green">GM</span><div><strong>Green Mirpur</strong><small>1.2k members</small></div></a>
+        <a href="#" class="community"><span class="sq sq--blue">DL</span><div><strong>Dhanmondi Lake Keepers</strong><small>640 members</small></div></a>
+      </div>
+    </aside>
+
+    <!-- ============ FEED ============ -->
+    <section class="feed">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero__content">
+          <span class="eyebrow"><span class="dot dot--light"></span>TODAY IN MIRPUR 10, DHAKA</span>
+          <h1>Small actions keep<br />the city breathing.</h1>
+          <div class="hero__stats">
+            <div><b>AQI 152</b><small>Unhealthy for sensitive groups</small></div>
+            <div><b>78%</b><small>Humidity today</small></div>
+            <div><b>Moderate</b><small>Noise level</small></div>
+          </div>
+          <div class="hero__actions">
+            <a href="#" class="btn btn--light">Find a mission near me →</a>
+            <a href="#" class="btn btn--ghost">Read the map</a>
+          </div>
+        </div>
+        <img class="hero__badge" src="public/images/hero-badge.svg" alt="" />
+      </div>
+
+      <!-- Composer -->
+      <div class="card composer">
+        <div class="composer__row">
+          <img class="avatar avatar--sm" src="public/images/avatar-user.svg" alt="" />
+          <input type="text" placeholder="Share a clean-up, ask the next ditch, or post a green tip…" />
+        </div>
+        <div class="composer__tools">
+          <button><img class="ic" src="public/icons/photo.svg" alt="" />Photo</button>
+          <button><img class="ic" src="public/icons/pin.svg" alt="" />Location</button>
+          <button><img class="ic" src="public/icons/alert.svg" alt="" />Report an issue</button>
+          <button><img class="ic" src="public/icons/flag.svg" alt="" />Join next mission</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="on">For you</button>
+        <button>Nearby</button>
+        <button>Following</button>
+      </div>
+
+      <!-- Post 1 -->
+      <article class="card post">
+        <header class="post__head">
+          <span class="avatar avatar--init" style="--c:#7b5ea7">TA</span>
+          <div class="post__meta">
+            <strong>Tanvir Ahmed</strong> <span class="muted">shared a mission update</span>
+            <small>Mirpur 10 · 2h ago · <a href="#">Green Mirpur</a></small>
+          </div>
+          <span class="tag tag--outline">Organizer</span>
+        </header>
+        <p>60 saplings in the ground on Section 10 park. The soil was harder than we planned but our crew stuck with it till sundown. Next drive on Saturday — bring gloves! <a href="#">#GreenMirpur</a> <a href="#">#TreeDrive</a></p>
+        <div class="linkcard">
+          <img class="ic" src="public/icons/leaf-green.svg" alt="" />
+          <div><strong>Green Mirpur Drive</strong><small>Sat, 8 Nov · 7:00 AM · 24 going</small></div>
+          <button class="btn btn--sm btn--soft">Joined</button>
+        </div>
+        <figure class="post__media">
+          <span class="media-label">MISSION UPDATE</span>
+          <img src="public/images/post-park.svg" alt="Volunteers planting trees in a park" />
+        </figure>
+        <div class="post__stats"><span>🌿 32 inspired</span><span>6 comments · 2 shares</span></div>
+        <footer class="post__actions">
+          <button><img class="ic" src="public/icons/leaf.svg" alt="" />Inspire</button>
+          <button><img class="ic" src="public/icons/chat.svg" alt="" />Comment</button>
+          <button><img class="ic" src="public/icons/share.svg" alt="" />Share</button>
+        </footer>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="card post">
+        <header class="post__head">
+          <img class="avatar" src="public/images/logo.svg" alt="" />
+          <div class="post__meta">
+            <strong>EcoPulse BD</strong> <span class="muted">posted an air quality alert</span>
+            <small>Official · 3h ago</small>
+          </div>
+        </header>
+        <p>AQI has reached 152 in Mirpur 10, which is unhealthy for sensitive groups. Keep outdoor exercise short before 5 PM and wear a mask if you have asthma. <a href="#">#AirQuality</a></p>
+        <div class="alertbox">
+          <img class="ic" src="public/icons/alert-red.svg" alt="" />
+          <div><strong>AQI 152 · Unhealthy for sensitive groups</strong><small>Updated 4:10 PM · source: DoE monitor, Mirpur</small></div>
+        </div>
+        <div class="post__stats"><span>🌿 18 inspired</span><span>4 comments · 11 shares</span></div>
+        <footer class="post__actions">
+          <button><img class="ic" src="public/icons/leaf.svg" alt="" />Inspire</button>
+          <button><img class="ic" src="public/icons/chat.svg" alt="" />Comment</button>
+          <button><img class="ic" src="public/icons/share.svg" alt="" />Share</button>
+        </footer>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="card post">
+        <header class="post__head">
+          <span class="avatar avatar--init" style="--c:#b07a2c">DW</span>
+          <div class="post__meta">
+            <strong>DNCC Ward 4 Office</strong> <span class="muted">resolved a community report</span>
+            <small>Official · 5h ago</small>
+          </div>
+        </header>
+        <p>The dumping spot behind the Agargaon bus stand has been cleared. Thanks to Rakib for the photos and precise location. A cleaner is posted there from 6 AM daily. <a href="#">#CleanDhaka</a></p>
+        <div class="linkcard">
+          <img class="ic" src="public/icons/alert.svg" alt="" />
+          <div><strong>R-1023 · Illegal dumping</strong><small>Reported 2 days ago</small></div>
+          <span class="tag tag--success">Resolved</span>
+        </div>
+        <figure class="post__media">
+          <span class="media-label">BEFORE RESOLVED</span>
+          <img src="public/images/post-dumping.svg" alt="Dumping spot before cleanup" />
+        </figure>
+        <div class="post__stats"><span>🌿 54 inspired</span><span>9 comments · 3 shares</span></div>
+        <footer class="post__actions">
+          <button class="liked"><img class="ic" src="public/icons/heart-red.svg" alt="" />Inspired</button>
+          <button><img class="ic" src="public/icons/chat.svg" alt="" />Comment</button>
+          <button><img class="ic" src="public/icons/share.svg" alt="" />Share</button>
+        </footer>
+      </article>
+
+      <!-- Post 4 -->
+      <article class="card post">
+        <header class="post__head">
+          <span class="avatar avatar--init" style="--c:#b0455e">TJ</span>
+          <div class="post__meta">
+            <strong>Tasnia Jamal</strong> <span class="muted">shared a clean-up</span>
+            <small>Dhanmondi · Yesterday · <a href="#">Dhanmondi Lake Keepers</a></small>
+          </div>
+          <button class="btn btn--sm btn--outline">Follow</button>
+        </header>
+        <p>Spent the morning on the boat with the lake crew. We pulled out 40 kg of plastic from the north bank. Next one is in two weeks — bring sun hats! <a href="#">#LakeKeepers</a> <a href="#">#PlasticFree</a></p>
+        <figure class="post__media">
+          <span class="media-label">CLEAN UP</span>
+          <img src="public/images/post-river.svg" alt="Volunteers in a boat cleaning the lake" />
+        </figure>
+        <div class="post__stats"><span>🌿 41 inspired</span><span>8 comments · 5 shares</span></div>
+        <footer class="post__actions">
+          <button><img class="ic" src="public/icons/leaf.svg" alt="" />Inspire</button>
+          <button><img class="ic" src="public/icons/chat.svg" alt="" />Comment</button>
+          <button><img class="ic" src="public/icons/share.svg" alt="" />Share</button>
+        </footer>
+      </article>
+    </section>
+
+    <!-- ============ RIGHT SIDEBAR ============ -->
+    <aside class="sidebar sidebar--right">
+      <div class="card air">
+        <h3>Air right now</h3>
+        <div class="air__body">
+          <div class="gauge" style="--p:61">
+            <span>152</span>
+          </div>
+          <div>
+            <span class="tag tag--warn">Unhealthy for sensitive groups</span>
+            <p>Mask on if you're outside; light exercise before 5 PM.</p>
+            <small class="muted">Mirpur 10 · updated 4:10 PM</small>
+          </div>
+        </div>
+        <div class="air__chips">
+          <span>PM2.5 · 58</span><span>PM10 · 94</span><span>O₃ · 21</span><span>Humidity · 78%</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__title"><h3>Missions near you</h3><a href="#">See all</a></div>
+        <ul class="list">
+          <li><span class="sq sq--green"><img class="ic" src="public/icons/leaf-white.svg" alt="" /></span><div><strong>Green Mirpur Drive</strong><small>Sat, 8 Nov · 0.4 km</small></div><button class="btn btn--sm btn--soft">Joined</button></li>
+          <li><span class="sq sq--blue"><img class="ic" src="public/icons/flag-white.svg" alt="" /></span><div><strong>Rupnagar Canal Drain Cleaning</strong><small>Sun, 9 Nov · 1.6 km</small></div><button class="btn btn--sm btn--dark">Join</button></li>
+          <li><span class="sq sq--teal"><img class="ic" src="public/icons/flag-white.svg" alt="" /></span><div><strong>Dhanmondi Lake Cleanup</strong><small>Fri, 14 Nov · 6.2 km</small></div><button class="btn btn--sm btn--dark">Join</button></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card__title"><h3>Volunteers to follow</h3></div>
+        <ul class="list">
+          <li><span class="avatar avatar--init avatar--sm" style="--c:#c4663b">FS</span><div><strong>Farhana Selim</strong><small>Gulshan · 12 missions</small></div><button class="btn btn--sm btn--dark">Follow</button></li>
+          <li><span class="avatar avatar--init avatar--sm" style="--c:#3d6fa8">RH</span><div><strong>Rakib Hasan</strong><small>Agargaon · 9 reports</small></div><button class="btn btn--sm btn--dark">Follow</button></li>
+          <li><span class="avatar avatar--init avatar--sm" style="--c:#2f7d5b">AH</span><div><strong>Ahmed Hossain</strong><small>Uttara · 7 missions</small></div><button class="btn btn--sm btn--dark">Follow</button></li>
+          <li><span class="avatar avatar--init avatar--sm" style="--c:#8a5aa8">AC</span><div><strong>Arif Chowdhury</strong><small>Mohammadpur · 5 missions</small></div><button class="btn btn--sm btn--dark">Follow</button></li>
+        </ul>
+      </div>
+
+      <div class="infobox">
+        <img class="ic" src="public/icons/info-blue.svg" alt="" />
+        <p><strong>Use voice in Bangla.</strong> Post updates, report issues or ask the ecobot by speaking — no typing needed.</p>
+      </div>
+    </aside>
+  </main>
+
+</body>
+</html>
