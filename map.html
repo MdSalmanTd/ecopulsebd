@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EcoPulse BD | Live Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/map.css" />
+  </head>
+  <body class="map-page">
+    <header class="topbar">
+      <a class="brand" href="map.html"
+        ><img src="public/images/logo.svg" alt="" /><span>EcoPulse BD</span></a
+      >
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="map.html"><span class="nav-symbol">⌂</span>Home</a
+        ><a class="selected" href="map.html"
+          ><img src="public/icons/google-maps.svg" alt="" />Map</a
+        >
+        <a href="missions.html"
+          ><img src="public/icons/flag.svg" alt="" />Missions</a
+        ><a href="missions.html#rewards"
+          ><img src="public/icons/gift.svg" alt="" />Rewards</a
+        >
+        <a href="missions.html#reports"
+          ><img src="public/icons/alert.svg" alt="" />Report</a
+        ><a href="missions.html#assistant"
+          ><img src="public/icons/user.svg" alt="" />Assistant</a
+        >
+      </nav>
+      <form class="searchbox" id="map-search-form" role="search">
+        <input
+          id="map-search-query"
+          aria-label="Search map"
+          placeholder="Search places..."
+        /><button class="search-submit" type="submit" aria-label="Search">
+          <img src="public/icons/search.svg" alt="" />
+        </button>
+      </form>
+      <div class="top-actions">
+        <button class="language"><b>EN</b></button
+        ><button class="bell" aria-label="Notifications">
+          <img src="public/icons/bell.svg" alt="" /></button
+        ><button class="user-chip">NR</button><span class="chevron">⌄</span>
+      </div>
+    </header>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <section class="profile-panel">
+          <div class="profile-row">
+            <span class="avatar">NR</span>
+            <div>
+              <strong>Nadia Rahman</strong><small>Level 4 · Eco Champion</small>
+            </div>
+          </div>
+          <div class="progress"><span></span></div>
+          <small class="score">1240 / 1600 Eco Score</small>
+        </section>
+        <nav class="side-links" aria-label="Your account">
+          <a href="#profile"><i>♙</i>Your profile</a
+          ><a href="#saved"><i>♧</i>Saved posts</a
+          ><a href="missions.html?view=mine"
+            ><i>⚑</i>My missions
+            <b class="count" data-joined-count hidden></b></a
+          ><a href="#reports"><i>♧</i>My reports <b class="count red">1</b></a
+          ><a href="#assistant"><i>♧</i>Ask the assistant</a
+          ><a href="#tools"><i>♢</i>Organizer tools</a>
+        </nav>
+        <section class="communities">
+          <h2>Your communities</h2>
+          <a href="#green" class="community"
+            ><i class="community-icon green-icon">❧</i
+            ><span><b>Green Mirpur</b><small>12.4K members</small></span></a
+          ><a href="#lake" class="community"
+            ><i class="community-icon blue-icon">♟</i
+            ><span
+              ><b>Dhanmondi Lake Keepers</b><small>8.1K members</small></span
+            ></a
+          >
+        </section>
+      </aside>
+      <main class="main-content map-content">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">LIVE MAP · MIRPUR 10, DHAKA</p>
+            <h1>See what's happening around you</h1>
+          </div>
+          <div class="refresh"><b>⟳</b> Realtime refresh every 15 min</div>
+        </div>
+        <nav class="map-filters" aria-label="Map layers">
+          <button
+            class="active"
+            type="button"
+            aria-pressed="true"
+            data-layer="all"
+          >
+            <img src="public/icons/google-maps.svg" alt="" />Map
+          </button>
+          <button type="button" aria-pressed="false" data-layer="trees">
+            <img src="public/icons/tree.svg" alt="" />Trees
+          </button>
+          <button type="button" aria-pressed="false" data-layer="waste">
+            <img src="public/icons/trash-bin.svg" alt="" />Waste Points
+          </button>
+          <button type="button" aria-pressed="false" data-layer="missions">
+            <img src="public/icons/flag.svg" alt="" />Missions
+          </button>
+          <button type="button" aria-pressed="false" data-layer="reports">
+            <img src="public/icons/alert.svg" alt="" />Reports
+          </button>
+          <button type="button" aria-pressed="false" data-layer="flood">
+            <img src="public/icons/flood.svg" alt="" />Flood Zones
+          </button>
+          <a class="map-my-missions" href="missions.html?view=mine"
+            ><img src="public/icons/user.svg" alt="" />My Missions
+            <span data-joined-count hidden></span
+          ></a>
+        </nav>
+        <p class="map-status" id="map-status" aria-live="polite">
+          Showing all map layers around Mirpur 10, Dhaka
+        </p>
+        <section class="map-panel" aria-label="Interactive map of Mirpur 10">
+          <div
+            id="eco-map"
+            role="application"
+            aria-label="Map. Use the layer controls to filter map markers."
+          ></div>
+          <div class="map-key" aria-label="Map icon legend">
+            <span><img src="public/icons/tree.svg" alt="" />Trees</span
+            ><span
+              ><img src="public/icons/trash-bin.svg" alt="" />Waste Points</span
+            ><span><img src="public/icons/flag.svg" alt="" />Missions</span
+            ><span><img src="public/icons/alert.svg" alt="" />Reports</span
+            ><span><img src="public/icons/flood.svg" alt="" />Flood Zones</span>
+          </div>
+        </section>
+        <section class="stat-grid">
+          <article class="stat-card">
+            <img
+              class="stat-icon stat-image"
+              src="public/icons/tree.svg"
+              alt=""
+            />
+            <div><b>142</b><small>Total Trees Planted</small></div>
+          </article>
+          <article class="stat-card">
+            <img
+              class="stat-icon stat-image"
+              src="public/icons/trash-bin.svg"
+              alt=""
+            />
+            <div><b>7090</b><small>kg Waste Collected</small></div>
+          </article>
+          <article class="stat-card">
+            <i class="stat-icon">❧</i>
+            <div><b>Moderate</b><small>Air Quality (Aqi)</small></div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="public/js/maplibre.js" defer></script>
+  </body>
+</html>

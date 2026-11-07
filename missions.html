@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EcoPulse BD | Missions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/missions.css" />
+  </head>
+  <body class="missions-page">
+    <header class="topbar">
+      <a class="brand" href="map.html"
+        ><img src="public/images/logo.svg" alt="" /><span>EcoPulse BD</span></a
+      >
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="map.html"><span class="nav-symbol">⌂</span>Home</a
+        ><a href="map.html"
+          ><img src="public/icons/google-maps.svg" alt="" />Map</a
+        ><a class="selected" href="missions.html"
+          ><img src="public/icons/flag.svg" alt="" />Missions</a
+        ><a href="#rewards"><img src="public/icons/gift.svg" alt="" />Rewards</a
+        ><a href="#reports"><img src="public/icons/alert.svg" alt="" />Report</a
+        ><a href="#assistant"
+          ><img src="public/icons/user.svg" alt="" />Assistant</a
+        >
+      </nav>
+      <label class="searchbox"
+        ><img src="public/icons/search.svg" alt="" /><input
+          placeholder="Search posts, missions..."
+      /></label>
+      <div class="top-actions">
+        <span class="aqi">● AQI 142 · Unhealthy</span
+        ><button class="language"><b>EN</b><span>|</span> বাংলা</button
+        ><button class="bell" aria-label="Notifications">
+          <img src="public/icons/bell.svg" alt="" /></button
+        ><button class="user-chip">NR</button>
+      </div>
+    </header>
+    <div class="app-layout mission-layout">
+      <aside class="sidebar">
+        <section class="profile-panel">
+          <div class="profile-row">
+            <span class="avatar">NR</span>
+            <div>
+              <strong>Nadia Rahman</strong><small>Level 4 · Eco Champion</small>
+            </div>
+          </div>
+          <div class="progress"><span></span></div>
+          <small class="score">1240 / 1600 Eco Score</small>
+        </section>
+        <nav class="side-links" aria-label="Your account">
+          <a href="#profile"><i>♙</i>Your profile</a
+          ><a href="#saved"><i>♧</i>Saved posts</a
+          ><a class="current" href="missions.html?view=mine"
+            ><i>⚑</i>My missions
+            <b class="count" data-joined-count hidden></b></a
+          ><a href="#reports"><i>♧</i>My reports <b class="count red">1</b></a
+          ><a href="#assistant"><i>♧</i>Ask the assistant</a
+          ><a href="#tools"><i>♢</i>Organizer tools</a>
+        </nav>
+        <section class="communities">
+          <h2>Your communities</h2>
+          <a href="#green" class="community"
+            ><i class="community-icon green-icon">❧</i
+            ><span><b>Green Mirpur</b><small>12.4K members</small></span></a
+          ><a href="#lake" class="community"
+            ><i class="community-icon blue-icon">♟</i
+            ><span
+              ><b>Dhanmondi Lake Keepers</b><small>8.1K members</small></span
+            ></a
+          >
+        </section>
+      </aside>
+      <main class="main-content mission-content">
+        <div class="mission-heading">
+          <div>
+            <p class="eyebrow">COMMUNITY ACTION</p>
+            <h1 id="mission-page-title">Missions</h1>
+          </div>
+          <button class="create" id="create-mission-button" type="button">
+            ＋ Create mission
+          </button>
+        </div>
+        <section class="campaign" id="your-progress">
+          <small>YOUR PROGRESS</small>
+          <div class="progress-window">
+            <div class="progress-track" id="progress-track"></div>
+            <p class="progress-empty" id="progress-empty">
+              Join a mission to see your progress.
+            </p>
+          </div>
+          <div class="progress-dots" id="progress-dots"></div>
+        </section>
+        <div class="mission-tools">
+          <nav class="mission-filters" aria-label="Filter missions">
+            <button class="active" type="button" data-filter="all">All</button
+            ><button type="button" data-filter="trees">Tree Plantation</button
+            ><button type="button" data-filter="waste">Waste Cleanup</button
+            ><button type="button" data-filter="drainage">Drainage</button
+            ><button type="button" data-filter="plastic">Plastic Free</button>
+          </nav>
+        </div>
+        <section class="mission-grid">
+          <article class="mission-card">
+            <div class="art grove">
+              <span>TREE PLANTATION</span
+              ><svg viewBox="0 0 400 115" aria-hidden="true">
+                <circle cx="360" cy="18" r="24" fill="#ffda74" />
+                <path d="M0 85h400v30H0z" fill="#70c965" />
+                <g fill="#43ae55">
+                  <path d="M45 55h7v36h-7z" />
+                  <circle cx="48" cy="49" r="27" />
+                  <path d="M115 57h7v35h-7z" />
+                  <circle cx="118" cy="49" r="24" />
+                  <path d="M186 61h7v31h-7z" />
+                  <circle cx="189" cy="54" r="21" />
+                  <path d="M266 54h8v38h-8z" />
+                  <circle cx="270" cy="47" r="28" />
+                  <path d="M341 61h7v31h-7z" />
+                  <circle cx="344" cy="53" r="24" />
+                </g>
+                <circle cx="88" cy="91" r="8" fill="#ef7653" />
+                <path d="M81 99h14l4 16H78z" fill="#ed6548" />
+                <circle cx="304" cy="91" r="8" fill="#2899df" />
+                <path d="M297 99h14l4 16h-22z" fill="#2584c6" />
+              </svg>
+            </div>
+            <div class="mission-info">
+              <div class="title-line">
+                <h2>Green Mirpur Drive</h2>
+                <i class="open">Open</i>
+              </div>
+              <p>
+                Planting 100 trees in Mirpur area to make our city greener and
+                cleaner.
+              </p>
+              <div class="meta">
+                <span>▣ Mar 10 – 20</span><span>⌖ Mirpur, Dhaka</span
+                ><span>♟ 1.2k/2k</span>
+              </div>
+            </div>
+            <footer>
+              <span><i class="team orange"></i>Mirpur Green Team</span
+              ><button>Join <b>→</b></button>
+            </footer>
+          </article>
+          <article class="mission-card">
+            <div class="art canal">
+              <span>CLEANUP</span
+              ><svg viewBox="0 0 400 115" aria-hidden="true">
+                <path
+                  d="M0 24q60-18 120 0t120 0 80 0 80 0v91H0z"
+                  fill="#71c3dc"
+                />
+                <path d="M0 65q60-15 120 0t120 0 160 0v50H0z" fill="#50adcc" />
+                <path d="M0 93h400v22H0z" fill="#80c66f" />
+                <path
+                  d="M0 27q35-25 70 0t70 0 70 0 70 0 60 0 60 0"
+                  fill="none"
+                  stroke="#8ed4df"
+                  stroke-width="15"
+                />
+                <path
+                  d="M34 79q25-15 53 0v13H34zM187 78q34-18 72 0v14h-72z"
+                  fill="#e9ce9d"
+                />
+                <rect
+                  x="77"
+                  y="69"
+                  width="17"
+                  height="24"
+                  rx="3"
+                  fill="#10a987"
+                />
+                <rect
+                  x="342"
+                  y="72"
+                  width="17"
+                  height="21"
+                  rx="3"
+                  fill="#f27d59"
+                />
+                <circle cx="331" cy="18" r="29" fill="#63bd69" />
+                <circle cx="370" cy="22" r="22" fill="#53b060" />
+              </svg>
+            </div>
+            <div class="mission-info">
+              <div class="title-line">
+                <h2>Kailshi Canal Drain Cleaning</h2>
+                <i class="open">Open</i>
+              </div>
+              <p>Cleaning the canal to reduce water pollution in our area.</p>
+              <div class="meta">
+                <span>▣ Apr 5 – 10</span><span>⌖ Kailshi, Dhaka</span
+                ><span>♟ 450/1k</span>
+              </div>
+            </div>
+            <footer>
+              <span><i class="team blue"></i>Clean Dhaka</span
+              ><button>Join <b>→</b></button>
+            </footer>
+          </article>
+          <article class="mission-card">
+            <div class="art lake">
+              <span>WASTE CLEANUP</span
+              ><svg viewBox="0 0 400 115" aria-hidden="true">
+                <path d="M0 80q80-12 160 0t140 0 100 0v35H0z" fill="#5ebad0" />
+                <path d="M0 102h400v13H0z" fill="#73c96a" />
+                <g fill="#48ad55">
+                  <circle cx="45" cy="21" r="24" />
+                  <circle cx="84" cy="27" r="19" />
+                  <circle cx="344" cy="24" r="25" />
+                  <circle cx="390" cy="20" r="23" />
+                </g>
+                <path
+                  d="M0 72q60-18 105 0t100 0 95 0 100 0"
+                  fill="none"
+                  stroke="#eff9df"
+                  stroke-width="14"
+                />
+                <ellipse cx="207" cy="85" rx="62" ry="13" fill="#e9ce9d" />
+                <circle cx="186" cy="77" r="8" fill="#ee7858" />
+                <path d="M179 85h15l4 17h-23z" fill="#e8684d" />
+                <circle cx="230" cy="76" r="8" fill="#2198dc" />
+                <path d="M223 84h15l4 17h-23z" fill="#2286c5" />
+                <rect
+                  x="288"
+                  y="82"
+                  width="17"
+                  height="20"
+                  rx="3"
+                  fill="#16a884"
+                />
+              </svg>
+            </div>
+            <div class="mission-info">
+              <div class="title-line">
+                <h2>Dhanmondi Lake Clean-up</h2>
+                <i class="open">Open</i>
+              </div>
+              <p>Let's keep Dhanmondi Lake clean and green together.</p>
+              <div class="meta">
+                <span>▣ Nov 1 – 7</span><span>⌖ Dhanmondi</span
+                ><span>♟ 850/1.5k</span>
+              </div>
+            </div>
+            <footer>
+              <span><i class="team purple"></i>Lake Care BD</span
+              ><button>Join <b>→</b></button>
+            </footer>
+          </article>
+          <article class="mission-card">
+            <div class="art plastic">
+              <span>PLASTIC-FREE</span
+              ><svg viewBox="0 0 400 115" aria-hidden="true">
+                <path d="M0 0h400v115H0z" fill="#cfe2cc" />
+                <path d="M0 83q80-37 160 0t140 0 100 0v32H0z" fill="#a5c78d" />
+                <path
+                  d="M44 0v79M91 0v72M327 0v78M377 0v74"
+                  stroke="#edf5e7"
+                  stroke-width="22"
+                />
+                <ellipse cx="207" cy="100" rx="98" ry="17" fill="#bba781" />
+                <path d="M166 42h82v55h-82z" fill="#fff9e8" />
+                <path
+                  d="M183 42c0-22 11-32 24-32s25 10 25 32"
+                  fill="none"
+                  stroke="#388f59"
+                  stroke-width="7"
+                />
+                <path
+                  d="M207 55c-16 12-18 26-8 33 8-9 13-13 8-33zm4 33c-6-12-2-21 14-29 4 14-2 24-14 29z"
+                  fill="#30a363"
+                />
+              </svg>
+            </div>
+            <div class="mission-info">
+              <div class="title-line">
+                <h2>Say No to Polythene Week</h2>
+                <i class="full">Full</i>
+              </div>
+              <p>Reduce single-use plastic for a cleaner Bangladesh.</p>
+              <div class="meta">
+                <span>▣ Oct 20 – 26</span><span>⌖ Dhaka</span
+                ><span>♟ 700/700</span>
+              </div>
+            </div>
+            <footer>
+              <span><i class="team orange"></i>Eco Bangla</span
+              ><button class="joined">✓ Joined</button>
+            </footer>
+          </article>
+          <article class="mission-card">
+            <div class="art grove">
+              <span>TREE PLANTATION</span
+              ><svg viewBox="0 0 400 115" aria-hidden="true">
+                <circle cx="360" cy="18" r="24" fill="#ffda74" />
+                <path d="M0 85h400v30H0z" fill="#70c965" />
+                <g fill="#43ae55">
+                  <path d="M45 55h7v36h-7z" />
+                  <circle cx="48" cy="49" r="27" />
+                  <path d="M115 57h7v35h-7z" />
+                  <circle cx="118" cy="49" r="24" />
+                  <path d="M186 61h7v31h-7z" />
+                  <circle cx="189" cy="54" r="21" />
+                  <path d="M266 54h8v38h-8z" />
+                  <circle cx="270" cy="47" r="28" />
+                  <path d="M341 61h7v31h-7z" />
+                  <circle cx="344" cy="53" r="24" />
+                </g>
+                <circle cx="88" cy="91" r="8" fill="#ef7653" />
+                <path d="M81 99h14l4 16H78z" fill="#ed6548" />
+                <circle cx="304" cy="91" r="8" fill="#2899df" />
+                <path d="M297 99h14l4 16h-22z" fill="#2584c6" />
+              </svg>
+            </div>
+            <div class="mission-info">
+              <div class="title-line">
+                <h2>Literar Sector 7 Greening</h2>
+                <i class="open">Open</i>
+              </div>
+              <p>Increase green cover by planting more trees.</p>
+              <div class="meta">
+                <span>▣ Jun 12 – 17</span><span>⌖ Sector 7</span
+                ><span>♟ 300/800</span>
+              </div>
+            </div>
+            <footer>
+              <span><i class="team teal"></i>Green Future</span
+              ><button>Join <b>→</b></button>
+            </footer>
+          </article>
+          <article class="mission-card">
+            <div class="art canal">
+              <span>DRAINAGE</span
+              ><svg viewBox="0 0 400 115" aria-hidden="true">
+                <path d="M0 0h400v115H0z" fill="#b9dbe6" />
+                <path d="M60 42h280v62H60z" fill="#368bb0" />
+                <path d="M76 53h248v40H76z" fill="#55abc5" />
+                <path d="M0 91q100-15 200 0t200 0v24H0z" fill="#72bf69" />
+                <ellipse cx="178" cy="66" rx="46" ry="11" fill="#e8d19f" />
+                <ellipse cx="259" cy="65" rx="40" ry="10" fill="#f2e7d0" />
+                <rect
+                  x="302"
+                  y="73"
+                  width="14"
+                  height="17"
+                  rx="3"
+                  fill="#f47b55"
+                />
+                <path d="M0 32h400" stroke="#edf6e9" stroke-width="12" />
+                <circle cx="25" cy="12" r="24" fill="#86c96d" />
+                <circle cx="376" cy="15" r="24" fill="#77bd68" />
+              </svg>
+            </div>
+            <div class="mission-info">
+              <div class="title-line">
+                <h2>Pre-monsoon Drain Check</h2>
+                <i class="open">Open</i>
+              </div>
+              <p>Ensure proper drainage before the monsoon season.</p>
+              <div class="meta">
+                <span>▣ May 1 – 5</span><span>⌖ Dhaka</span
+                ><span>♟ 200/400</span>
+              </div>
+            </div>
+            <footer>
+              <span><i class="team blue"></i>City Care</span
+              ><button>Join <b>→</b></button>
+            </footer>
+          </article>
+        </section>
+        <p class="missions-empty" id="missions-empty" hidden>
+          No joined missions yet.
+        </p>
+        <p class="missions-empty" id="missions-empty" hidden>
+          No joined missions yet.
+        </p>
+      </main>
+    </div>
+    <dialog
+      class="mission-dialog"
+      id="mission-details-dialog"
+      aria-labelledby="mission-detail-title"
+    >
+      <form method="dialog" class="dialog-close-form">
+        <button class="dialog-close" aria-label="Close">×</button>
+      </form>
+      <p class="eyebrow">MISSION DETAILS</p>
+      <h2 id="mission-detail-title"></h2>
+      <p id="mission-detail-description"></p>
+      <div class="mission-detail-media" id="mission-detail-media"></div>
+      <dl class="detail-list">
+        <div>
+          <dt>Category</dt>
+          <dd id="mission-detail-category"></dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd id="mission-detail-location"></dd>
+        </div>
+        <div>
+          <dt>Dates</dt>
+          <dd id="mission-detail-date"></dd>
+        </div>
+        <div>
+          <dt>Organizer</dt>
+          <dd id="mission-detail-organizer"></dd>
+        </div>
+        <div>
+          <dt>Participants</dt>
+          <dd id="mission-detail-participants"></dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd id="mission-detail-status"></dd>
+        </div>
+      </dl>
+      <button class="create" id="mission-detail-join" type="button">
+        Join
+      </button>
+    </dialog>
+    <dialog
+      class="mission-dialog"
+      id="mission-create-dialog"
+      aria-labelledby="create-mission-title"
+    >
+      <form id="create-mission-form">
+        <div class="dialog-title-row">
+          <div>
+            <p class="eyebrow">COMMUNITY ACTION</p>
+            <h2 id="create-mission-title">Create a mission</h2>
+          </div>
+          <button
+            class="dialog-close"
+            type="button"
+            data-close-create
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <label
+          >Mission name<input name="title" required maxlength="80"
+        /></label>
+        <label
+          >Category<select name="category" required>
+            <option value="trees">Tree Plantation</option>
+            <option value="waste">Waste Cleanup</option>
+            <option value="drainage">Drainage</option>
+            <option value="plastic">Plastic Free</option>
+          </select></label
+        >
+        <label
+          >Description<textarea
+            name="description"
+            required
+            maxlength="400"
+            rows="3"
+          ></textarea>
+        </label>
+        <div class="form-row">
+          <label
+            >Location<input name="location" required maxlength="100" /></label
+          ><label>Start date<input name="date" type="date" required /></label>
+        </div>
+        <label
+          >Campaign ends<input name="endDate" type="date" required
+        /></label>
+        <label
+          >Photos or videos<input
+            name="media"
+            type="file"
+            accept="image/*,video/*"
+            multiple
+        /></label>
+        <label
+          >Participant limit<input
+            name="capacity"
+            type="number"
+            min="1"
+            max="100000"
+            value="20"
+            required
+        /></label>
+        <div class="dialog-actions">
+          <button class="btn btn--outline" type="button" data-close-create>
+            Cancel</button
+          ><button class="create" type="submit">Create mission</button>
+        </div>
+      </form>
+    </dialog>
+    <p
+      class="mission-toast"
+      id="mission-toast"
+      role="status"
+      aria-live="polite"
+    ></p>
+    <script src="public/js/missions.js" defer></script>
+  </body>
+</html>
