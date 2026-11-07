@@ -1,0 +1,279 @@
+/* ===== EcoPulse BD — Rewards (extends styles.css) ===== */
+
+.layout--rewards {
+  grid-template-columns: 230px minmax(0, 1fr);
+}
+
+.rewards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ---------- Page head ---------- */
+.eyebrow--dark {
+  color: var(--muted);
+}
+.page-head h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--green-900);
+  margin-top: 4px;
+}
+
+/* ---------- Profile summary ---------- */
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+}
+.summary__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: var(--green-500);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+}
+.summary__info {
+  flex: 1;
+  min-width: 0;
+}
+.summary__info h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.summary__bar {
+  margin-top: 10px;
+  height: 6px;
+  background: var(--green-100);
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 320px;
+}
+.summary__bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-500), var(--yellow));
+}
+.summary__level {
+  text-align: right;
+}
+.summary__level strong {
+  font-size: 15px;
+  color: var(--green-700);
+}
+
+/* ---------- Stats ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.stat small {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.stat strong {
+  display: block;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 4px 0 2px;
+  color: var(--green-900);
+}
+.stat span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.stat--dark {
+  background: var(--green-900);
+  border-color: var(--green-900);
+}
+.stat--dark small,
+.stat--dark span {
+  color: #b8d5bf;
+}
+.stat--dark strong {
+  color: #fff;
+}
+.stat--cream {
+  background: #f8ecd0;
+  border-color: #efdcb0;
+}
+.stat--cream strong {
+  color: #6b4a10;
+}
+
+/* ---------- Grid ---------- */
+.rewards__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.rewards__side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ---------- Badges ---------- */
+.badges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 6px;
+}
+.badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  background: #fbfaf6;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 8px 12px;
+}
+.badge-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 4px;
+  background: var(--green-100);
+  border: 2px solid var(--green-500);
+}
+.badge-card__icon img {
+  width: 20px;
+  height: 20px;
+}
+.badge-card__icon--blue {
+  background: var(--blue-100);
+  border-color: #2f76b7;
+}
+.badge-card__icon--amber {
+  background: var(--warn-bg);
+  border-color: var(--yellow);
+}
+.badge-card strong {
+  font-size: 13px;
+}
+.badge-card small {
+  font-size: 11px;
+  line-height: 1.35;
+  min-height: 2.7em;
+}
+.badge-card .tag {
+  margin-top: 4px;
+}
+.badge-card.is-locked {
+  opacity: 0.55;
+}
+.badge-card.is-locked .badge-card__icon {
+  background: var(--bg);
+  border-color: var(--line);
+  filter: grayscale(1);
+}
+
+/* ---------- Leaderboard ---------- */
+.board {
+  list-style: none;
+}
+.board li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+  border-top: 1px solid var(--line);
+}
+.board li:first-child {
+  border-top: 0;
+}
+.board .rank {
+  width: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.board strong {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.board b {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.board li.is-you {
+  background: var(--green-100);
+  border-radius: 10px;
+  border-top-color: transparent;
+}
+.board li.is-you strong,
+.board li.is-you b,
+.board li.is-you .rank {
+  color: var(--green-700);
+}
+
+/* ---------- Activity ---------- */
+.activity .xp {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green-500);
+  white-space: nowrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .layout--rewards {
+    grid-template-columns: 210px minmax(0, 1fr);
+  }
+  .rewards__grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 800px) {
+  .layout--rewards {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  .summary {
+    flex-wrap: wrap;
+  }
+  .summary__level {
+    text-align: left;
+    width: 100%;
+  }
+  .badges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
