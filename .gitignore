@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.log
+.env*.local
+.env
+
+# local databases (PGlite fallback)
+data/
+
+# copied at build time from node_modules (scripts/copy-maplibre-worker.mjs)
+public/vendor/

@@ -1,0 +1,25 @@
+{
+  "name": "ecopulse-bd",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "copy:maplibre": "node scripts/copy-maplibre-worker.mjs",
+    "postinstall": "npm run copy:maplibre",
+    "predev": "npm run copy:maplibre",
+    "prebuild": "npm run copy:maplibre"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
+    "@electric-sql/pglite": "^0.5.15",
+    "maplibre-gl": "^6.16.0",
+    "next": "^16.4.5",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "redis": "^6.3.1",
+    "server-only": "^0.0.1"
+  }
+}

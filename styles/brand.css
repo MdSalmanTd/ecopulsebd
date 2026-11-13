@@ -1,0 +1,39 @@
+/* ===== EcoPulse BD — shared logo (imported by every layout) ===== */
+.brandlogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: #12311f;
+  flex-shrink: 0;
+}
+.brandlogo__mark {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+.brandlogo__word {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.brandlogo__word b {
+  font-weight: 700;
+  color: #15965d;
+}
+.brandlogo--lg .brandlogo__mark {
+  width: 40px;
+  height: 40px;
+}
+.brandlogo--lg .brandlogo__word {
+  font-size: 24px;
+}
+.brandlogo--light {
+  color: #fff;
+}
+.brandlogo--light .brandlogo__word b {
+  color: #5ee36f;
+}
