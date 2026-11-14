@@ -38,6 +38,7 @@ const PAGES: SearchResult[] = [
   { label: "Rewards & badges", hint: "Profile", href: "/profile?tab=rewards" },
   { label: "Leaderboard", hint: "Profile · Rewards", href: "/profile?tab=rewards#leaderboard" },
   { label: "Ask the assistant", hint: "AI Assistant", href: "/assistant" },
+  { label: "Eco Shop", hint: "Spend your Eco Coins", href: "/shop" },
 ];
 
 
@@ -240,6 +241,7 @@ const TABS: Tab[] = [
   { href: "/missions", label: "Missions", d: "M5 21V4m0 0h11l-2 4 2 4H5" },
   { href: "/reports", label: "Reports", d: "M12 3 2 20h20L12 3Zm0 6v5m0 3v.5" },
   { href: "/profile?tab=rewards", match: "rewards", label: "Rewards", d: "M4 11h16v10H4zM3 7h18v4H3zm9 0v14M12 7S10.5 3 8 3.5 6.5 7 12 7Zm0 0s1.5-4 4-3.5S17.5 7 12 7Z" },
+  { href: "/shop", label: "Shop", d: "M6 7h12l-1 13H7L6 7Zm3 0V6a3 3 0 0 1 6 0v1" },
   {
     href: "/assistant",
     label: "Assistant",

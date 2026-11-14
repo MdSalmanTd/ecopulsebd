@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Logo, ArrowUpRight } from "./ui";
 import { initials, useSignedIn, useUserName } from "@/lib/useUser";
+import Topbar from "@/components/Topbar";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -24,6 +25,10 @@ export default function SiteNav() {
   const [open, setOpen] = useState(false);
   const signedIn = useSignedIn();
   const name = useUserName();
+
+  // Signed-in members opening the shop from the app keep the app's top bar,
+  // instead of landing on the public website's header.
+  if (signedIn && (pathname === "/shop" || pathname.startsWith("/shop/"))) return <Topbar />;
 
   return (
     <header className={`snav${open ? " is-open" : ""}`}>

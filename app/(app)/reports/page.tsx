@@ -12,7 +12,7 @@ export default function ReportsPage() {
       <Topbar active="reports" />
       <main className="layout">
         <aside className="sidebar sidebar--left" aria-label="Your account">
-          <ProfileCard subtitle="Level 4 · Eco Champion" percent={78} caption="1,240 / 1,600 ECO SCORE" />
+          <ProfileCard />
           <SideMenu active="reports" />
           <Communities />
         </aside>

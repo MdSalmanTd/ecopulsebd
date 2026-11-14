@@ -1,6 +1,7 @@
 import "server-only";
 import { query, tx, type QueryFn, type Row } from "./db";
 import { HttpError } from "./errors";
+import { SCORE_PER_RESOLVED_REPORT } from "../levels";
 import { LOCATIONS, SEED_NOTIFICATIONS, isLocationKey, isMissionCategory, type MissionCategory } from "../app-data";
 import type { IssueType, Mission, Notification, Profile, ProfileStats, Report, Role, User } from "../types";
 
@@ -341,7 +342,8 @@ export async function getProfile(userId: number): Promise<Profile> {
     area: u.area,
     joinedAt: new Date(u.created_at).toISOString(),
     avatarUrl: avatarUrl(u.id, u.has_avatar, u.photo_version),
-    ecoCoins: u.eco_coins,
+    ecoCoins: u.eco_coins ?? 0,
+    ecoScore: stats.resolved * SCORE_PER_RESOLVED_REPORT,
     stats,
   };
 }

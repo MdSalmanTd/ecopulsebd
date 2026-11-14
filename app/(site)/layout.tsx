@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import "@/styles/brand.css";
 import "@/styles/site.css";
 import "@/styles/shop.css";
+import "@/styles/app-topbar.css";
 import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
 import { RevealOnScroll } from "@/components/site/fx";

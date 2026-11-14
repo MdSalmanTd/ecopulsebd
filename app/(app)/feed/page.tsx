@@ -14,7 +14,7 @@ export default function FeedPage() {
       <Topbar />
       <main className="layout layout--feed">
         <aside className="sidebar sidebar--left">
-          <ProfileCard subtitle="Level 4 · Eco Champion" percent={78} caption="1,240 / 1,600 ECO SCORE" />
+          <ProfileCard />
           <SideMenu active="feed" />
           <Communities />
         </aside>

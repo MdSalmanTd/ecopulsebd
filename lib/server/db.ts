@@ -114,7 +114,9 @@ CREATE TABLE IF NOT EXISTS saved_posts (
 ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT NOT NULL DEFAULT 'citizen';
 ALTER TABLE users ADD COLUMN IF NOT EXISTS organization TEXT;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS bio TEXT NOT NULL DEFAULT '';
-ALTER TABLE users ADD COLUMN IF NOT EXISTS area TEXT NOT NULL DEFAULT 'Mirpur 10';
+-- New accounts start with no area; members pick it in Edit profile.
+ALTER TABLE users ADD COLUMN IF NOT EXISTS area TEXT NOT NULL DEFAULT '';
+ALTER TABLE users ALTER COLUMN area SET DEFAULT '';
 -- Profile photo (version bumps on every change so browsers fetch the new image).
 ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar BYTEA;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_type TEXT;
@@ -165,7 +167,9 @@ CREATE TABLE IF NOT EXISTS notification_reads (
 
 -- ---------- Eco Shop ----------
 -- Eco Coins: spent in the shop (1 coin = 1 taka off) and on partner vouchers.
-ALTER TABLE users ADD COLUMN IF NOT EXISTS eco_coins INTEGER NOT NULL DEFAULT 380;
+-- New accounts start with 0 coins; they are only earned through verified actions.
+ALTER TABLE users ADD COLUMN IF NOT EXISTS eco_coins INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE users ALTER COLUMN eco_coins SET DEFAULT 0;
 DO $$ BEGIN
   ALTER TABLE users ADD CONSTRAINT users_eco_coins_check CHECK (eco_coins >= 0);
 EXCEPTION WHEN duplicate_object THEN NULL;

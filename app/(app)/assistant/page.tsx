@@ -13,11 +13,7 @@ export default function AssistantPage() {
 
       <main className="layout layout--assistant">
         <aside className="sidebar sidebar--left">
-          <ProfileCard
-            subtitle="Level 4 · Eco Champion"
-            percent={78}
-            caption="1,240 / 1,600 ECO SCORE"
-          />
+          <ProfileCard />
           <SideMenu active="assistant" />
           <Communities />
         </aside>

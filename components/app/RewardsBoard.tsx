@@ -5,6 +5,7 @@ import { useMe, useMissions, useReports } from "@/lib/app-state";
 import Avatar from "@/components/Avatar";
 import { ISSUE_LABELS } from "@/lib/app-data";
 import { initials, useUserName } from "@/lib/useUser";
+import { levelFor } from "@/lib/levels";
 
 interface Badge {
   name: string;
@@ -19,7 +20,7 @@ interface Badge {
 type Period = "month" | "all";
 
 type BoardEntry =
-  | { you: true; score: number }
+  | { you: true }
   | { you?: undefined; name: string; initials: string; color: string; score: number };
 
 const BADGES: Badge[] = [
@@ -38,13 +39,13 @@ const BOARDS: Record<Period, BoardEntry[]> = {
     { name: "Rakib Hasan", initials: "RH", color: "#3d6fa8", score: 1950 },
     { name: "Sumaiya Islam", initials: "SI", color: "#a8476b", score: 1770 },
     { name: "Arif Hossain", initials: "AH", color: "#2c8a86", score: 1520 },
-    { you: true, score: 1420 },
+    { you: true },
   ],
   all: [
     { name: "Farhana Akter", initials: "FA", color: "#c4663b", score: 9840 },
     { name: "Tanvir Ahmed", initials: "TA", color: "#7b5ea7", score: 9210 },
     { name: "Sumaiya Islam", initials: "SI", color: "#a8476b", score: 7760 },
-    { you: true, score: 6950 },
+    { you: true },
     { name: "Rakib Hasan", initials: "RH", color: "#3d6fa8", score: 6420 },
     { name: "Arif Hossain", initials: "AH", color: "#2c8a86", score: 5180 },
   ],
@@ -64,6 +65,11 @@ export default function RewardsBoard({ embedded = false }: { embedded?: boolean 
   const [period, setPeriod] = useState<Period>("month");
   const [badge, setBadge] = useState<Badge | null>(null);
   const earned = BADGES.filter((b) => b.earned).length;
+  const lv = levelFor(me?.ecoScore ?? 0);
+  const myScore = lv.score;
+  // Place "you" on the board by your real score.
+  const scoreOf = (p: BoardEntry) => (p.you ? myScore : p.score);
+  const board = (period: Period) => [...BOARDS[period]].sort((a, b) => scoreOf(b) - scoreOf(a));
 
   // Recent things the user did in this browser show up first (XP is pending until verified).
   const recent = [
@@ -93,12 +99,16 @@ export default function RewardsBoard({ embedded = false }: { embedded?: boolean 
           <h2>{name}</h2>
           <small>Citizen · Mirpur 10, Dhaka · Joined Aug 2026</small>
           <div className="summary__bar">
-            <span style={{ width: "89%" }}></span>
+            <span style={{ width: `${lv.percent}%` }}></span>
           </div>
         </div>
         <div className="summary__level">
-          <strong>Level 4</strong>
-          <small>1,420 / 1,600 XP to Level 5</small>
+          <strong>Level {lv.level}</strong>
+          <small>
+            {lv.next == null
+              ? `${myScore.toLocaleString("en-US")} XP · top level`
+              : `${myScore.toLocaleString("en-US")} / ${lv.next.toLocaleString("en-US")} XP to Level ${lv.level + 1}`}
+          </small>
         </div>
       </div>
 
@@ -108,7 +118,7 @@ export default function RewardsBoard({ embedded = false }: { embedded?: boolean 
       <div className="stats">
         <div className="stat stat--dark">
           <small>ECO SCORE</small>
-          <strong>1,420</strong>
+          <strong>{me ? myScore.toLocaleString("en-US") : "…"}</strong>
           <span>From verified missions &amp; reports</span>
         </div>
         <div className="stat stat--cream">
@@ -171,7 +181,7 @@ export default function RewardsBoard({ embedded = false }: { embedded?: boolean 
               </div>
             </div>
             <ol className="board" key={period}>
-              {BOARDS[period].map((p, i) => (
+              {board(period).map((p, i) => (
                 <li key={p.you ? "you" : p.name} className={p.you ? "is-you" : undefined}>
                   <span className="rank">#{i + 1}</span>
                   {p.you ? (
@@ -182,7 +192,7 @@ export default function RewardsBoard({ embedded = false }: { embedded?: boolean 
                     </span>
                   )}
                   <strong>{p.you ? "You" : p.name}</strong>
-                  <b>{p.score.toLocaleString()}</b>
+                  <b>{scoreOf(p).toLocaleString()}</b>
                 </li>
               ))}
             </ol>

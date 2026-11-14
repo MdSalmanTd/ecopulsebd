@@ -519,7 +519,7 @@ export function Post({ post, feed, highlight }: PostProps) {
 
       <footer className="post__actions">
         <button type="button" className={post.liked ? "liked" : undefined} aria-pressed={post.liked} onClick={() => run(feed.toggleLike(post))}>
-          <img className="ic" src={post.liked ? "/icons/heart-red.svg" : "/icons/leaf.svg"} alt="" />
+          <img className="ic" src={post.liked ? "/icons/leaf-filled.svg" : "/icons/leaf.svg"} alt="" />
           {post.liked ? "Inspired" : "Inspire"}
         </button>
         <button type="button" aria-expanded={showComments} onClick={() => setShowComments((s) => !s)}>

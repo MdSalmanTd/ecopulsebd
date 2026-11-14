@@ -1,0 +1,460 @@
+/* ===== App top bar on website pages (the shop, for signed-in members) =====
+   Generated from styles.css + app-ui.css so the website can show the app's header
+   without loading the whole app stylesheet. Element resets use :where() so component rules (e.g. .fbtab colours) still win. App tokens are scoped to .topbar so they
+   don't override the website's own --line / --muted / --radius. */
+
+.topbar {
+  --bg: #f4f1ea; --card: #ffffff; --line: #e7e2d7; --text: #1d2a22; --muted: #74807a;
+  --green-900: #1c3a29; --green-700: #2c5a3d; --green-500: #3f7d55; --green-100: #e3efe5;
+  --warn-bg: #fdf0d8; --warn: #9a6512; --red: #c4483d; --radius: 14px;
+  --report-line: #e4ece7; --report-text: #183b4b; --report-green: #138250;
+  font-family: "Inter", system-ui, sans-serif; font-size: 14px; line-height: 1.5; color: var(--text);
+}
+:where(.topbar) a { color: var(--green-500); text-decoration: none; }
+:where(.topbar) button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+:where(.topbar) img { display: block; max-width: 100%; }
+:where(.topbar) ul { list-style: none; }
+:where(.topbar) small { display: block; font-size: 12px; color: var(--muted); }
+:where(.topbar) .ic { width: 18px; height: 18px; flex-shrink: 0; }
+
+.topbar { position: sticky; top: 0; z-index: 10; background: var(--card); border-bottom: 1px solid var(--line); }
+.topbar__inner { max-width: 1240px; margin: 0 auto; height: 60px; padding: 0 20px; display: flex; align-items: center; gap: 24px; }
+.search { flex: 1; max-width: 260px; display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); }
+.search input { border: 0; background: none; outline: none; font: inherit; width: 100%; color: var(--text); }
+.topbar__right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.pill--aqi { background: var(--warn-bg); color: var(--warn); }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.lang button { padding: 4px 8px; font-size: 12px; color: var(--muted); }
+.lang button.on { background: var(--green-900); color: #fff; }
+.icon-btn { position: relative; padding: 6px; color: var(--muted); }
+.icon-btn .badge { position: absolute; top: 5px; right: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--red); border: 2px solid #fff; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.avatar--sm { width: 32px; height: 32px; }
+.avatar--init { display: grid; place-items: center; background: var(--c); color: #fff; font-size: 13px; font-weight: 600; }
+.avatar--sm.avatar--init { font-size: 11px; }
+.topbar { background: rgba(255, 255, 255, .94); border-color: var(--report-line); }
+.topbar__inner { min-height: 60px; gap: clamp(10px, 1.7vw, 22px); }
+.search { min-width: 120px; max-width: 220px; padding: 6px 11px; flex: 1 1 160px; }
+.search input { min-width: 0; font-size: 11px; }
+.pill { padding: 5px 10px; font-size: 10px; white-space: nowrap; }
+.pill--aqi { background: #f8edcf; color: #51462b; }
+.pill--aqi .dot { background: #e2a53c; }
+.lang { overflow: hidden; border-radius: 999px; background: #fffefa; }
+.lang button { font-size: 10px; }
+.lang button.on { background: #e8f4eb; color: var(--report-green); }
+.icon-btn { width: 31px; height: 31px; padding: 5px; border: 1px solid var(--report-line); border-radius: 50%; background: #fffefa; }
+.avatar--sm { width: 30px; height: 30px; }
+
+/* ---------- Facebook-style header ---------- */
+.topbar--fb {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  border-bottom: 0;
+}
+.topbar--fb .topbar__inner {
+  max-width: none;
+  height: 56px;
+  min-height: 56px;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas: "left tabs right";
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+.topbar__left {
+  grid-area: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.topbar--fb .brandlogo__word {
+  white-space: nowrap;
+}
+.topbar--fb .search-wrap {
+  flex: 0 1 240px;
+  min-width: 40px;
+}
+.topbar--fb .search {
+  height: 40px;
+  border: 0;
+  background: #f0f2f5;
+  padding: 0 14px;
+}
+.topbar--fb .topbar__right {
+  grid-area: right;
+  justify-self: end;
+  margin-left: 0;
+  gap: 8px;
+}
+
+/* centre tabs */
+.fbtabs {
+  grid-area: tabs;
+  display: flex;
+  height: 56px;
+}
+.fbtab {
+  position: relative;
+  width: clamp(64px, 8vw, 112px);
+  height: 56px;
+  display: grid;
+  place-items: center;
+  color: #65676b;
+}
+.fbtab::before {
+  /* hover background, inset like Facebook */
+  content: "";
+  position: absolute;
+  inset: 4px 2px 6px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.fbtab:hover::before {
+  background: #f0f2f5;
+}
+.fbtab svg {
+  position: relative;
+  width: 26px;
+  height: 26px;
+}
+.fbtab.on {
+  color: var(--green-500);
+}
+.fbtab.on::before {
+  background: none;
+}
+.fbtab.on::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--green-500);
+}
+/* icon + text label */
+.fbtab {
+  grid-template-rows: auto auto;
+  align-content: center;
+  gap: 2px;
+}
+.fbtab__label {
+  position: relative;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+.fbtab.on .fbtab__label {
+  font-weight: 700;
+}
+.fbtab svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+/* round grey buttons on the right */
+.topbar--fb .icon-btn,
+.topbar--fb button.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+.topbar--fb .icon-btn {
+  background: #e4e6eb;
+  color: #050505;
+}
+.topbar--fb .icon-btn:hover {
+  background: #d8dadf;
+}
+.topbar--fb .icon-btn .ic {
+  width: 20px;
+  height: 20px;
+}
+.topbar--fb .icon-btn .badge {
+  top: 4px;
+  right: 4px;
+}
+.topbar--fb button.avatar {
+  font-size: 13px;
+}
+.topbar--fb .lang {
+  height: 36px;
+  align-items: center;
+  border: 0;
+  background: #e4e6eb;
+  border-radius: 999px;
+  padding: 3px;
+}
+.topbar--fb .lang button {
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+}
+.topbar--fb .lang button.on {
+  background: #fff;
+  color: var(--green-900);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.topbar--fb .pill--aqi {
+  height: 36px;
+  padding: 0 12px;
+}
+
+@media (max-width: 1100px) {
+  .topbar--fb .brandlogo__word,
+  .topbar--fb .lang {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  /* Tabs move to their own row under the header, like Facebook's mobile site */
+  .topbar--fb .topbar__inner {
+    height: auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "left right"
+      "tabs tabs";
+    row-gap: 0;
+    padding-top: 6px;
+  }
+  .topbar--fb .brandlogo__word {
+    display: inline;
+  }
+  .topbar--fb .search-wrap {
+    display: none;
+  }
+  .topbar--fb .pill--aqi {
+    display: none;
+  }
+  /* Main tabs become a fixed bottom navigation bar on phones and small tablets */
+  .topbar--fb .topbar__inner {
+    grid-template-areas: "left right";
+    padding-bottom: 6px;
+  }
+  .fbtabs {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: #fff;
+    border-top: 1px solid #e4e6eb;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+  }
+  .fbtab {
+    flex: 1;
+    width: auto;
+    height: 60px;
+    min-width: 0;
+  }
+  .fbtab::before {
+    inset: 6px 4px;
+  }
+  .fbtab.on::after {
+    top: 0;
+    bottom: auto;
+    left: 22%;
+    right: 22%;
+    border-radius: 0 0 3px 3px;
+  }
+  .fbtab__label {
+    font-size: 11px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .fbtab__sos {
+    top: 5px;
+  }
+  /* Keep page content, toasts and the live-location pill clear of the bottom bar */
+  body:has(.fbtabs) {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+  body:has(.fbtabs) .toast {
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+  body:has(.fbtabs) .helpbeacon {
+    bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  body:has(.fbtabs):has(.helpbeacon) .toast {
+    bottom: calc(150px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (max-width: 640px) {
+  body:has(.fbtabs):has(.helpbeacon) .toast {
+    bottom: calc(200px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (max-width: 380px) {
+  .fbtab__label {
+    font-size: 10px;
+  }
+  .fbtab svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+
+/* ---------- Top bar menus ---------- */
+.search-wrap,
+.menu-wrap {
+  position: relative;
+}
+.search-wrap {
+  flex: 1;
+  max-width: 260px;
+  min-width: 120px;
+}
+.search-wrap .search {
+  max-width: none;
+}
+button.avatar {
+  border: 0;
+  cursor: pointer;
+}
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  z-index: 60;
+  min-width: 240px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -16px rgba(20, 40, 25, 0.35);
+  padding: 6px;
+  list-style: none;
+  animation: dropIn 0.15s ease;
+}
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+.search-results {
+  left: 0;
+  right: 0;
+}
+.search-results li {
+  display: grid;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.search-results li.is-active {
+  background: var(--green-100);
+}
+.search-results strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+.search-results small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.dropdown__empty {
+  padding: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: default !important;
+}
+.dropdown__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.dropdown__head button {
+  font-size: 12px;
+  color: var(--green-700);
+  font-weight: 600;
+}
+.notif {
+  right: 0;
+  width: 320px;
+}
+.notif ul {
+  list-style: none;
+}
+.notif li a {
+  display: grid;
+  gap: 2px;
+  padding: 9px 10px 9px 22px;
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 12.5px;
+  line-height: 1.4;
+  position: relative;
+}
+.notif li a:hover {
+  background: var(--bg);
+}
+.notif li.is-unread a::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green-500);
+}
+.notif li.is-unread span {
+  font-weight: 600;
+}
+.notif small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.account {
+  right: 0;
+  display: grid;
+}
+.account a,
+.account button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text);
+}
+.account a:hover,
+.account button:hover {
+  background: var(--bg);
+}
+.account .danger {
+  color: var(--red);
+}
+.pill--aqi:hover {
+  filter: brightness(0.97);
+}
+
+/* Sidebar profile card links to rewards */
+.profile--link {
+  display: block;
+  color: inherit;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.profile--link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -12px rgba(20, 40, 25, 0.3);
+}
+

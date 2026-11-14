@@ -38,6 +38,8 @@ export interface Profile {
   avatarUrl: string | null;
   /** Reward currency spent in the Eco Shop. */
   ecoCoins: number;
+  /** Earned from verified actions (resolved reports). */
+  ecoScore: number;
   stats: ProfileStats;
 }
 

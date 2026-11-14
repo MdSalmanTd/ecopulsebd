@@ -11,6 +11,7 @@ import { ISSUE_LABELS, MISSION_CATEGORIES, STATUS_LABELS } from "@/lib/app-data"
 import { revalidate } from "@/lib/api-client";
 import { checkImageFile, cropSquare, dataUrlToBlob } from "@/lib/image";
 import { useDismiss } from "@/lib/hooks";
+import { levelFor } from "@/lib/levels";
 import Avatar from "@/components/Avatar";
 import RewardsBoard from "./RewardsBoard";
 import { Post, timeAgo } from "./FeedBoard";
@@ -98,7 +99,10 @@ function EditProfile({ user, areas, onClose, onSave }: EditProfileProps) {
           )}
           <label>
             Area
-            <select name="area" defaultValue={user.area ?? undefined}>
+            <select name="area" defaultValue={user.area ?? ""} required>
+              <option value="" disabled>
+                Choose your area
+              </option>
               {areas.map((a: string) => (
                 <option key={a}>{a}</option>
               ))}
@@ -309,6 +313,7 @@ export default function ProfileBoard() {
     );
   if (!user) return <p className="feed__empty">Loading profile…</p>;
   const s = user.stats;
+  const lv = levelFor(user.ecoScore);
   const joined = new Date(user.joinedAt).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
 
   return (
@@ -321,7 +326,7 @@ export default function ProfileBoard() {
             <p className="profilehead__sub">
               <span className={`role-tag${isOrganizer ? " role-tag--org" : ""}`}>{isOrganizer ? "Organizer" : "Citizen"}</span>
               {isOrganizer && user.organization && <span>{user.organization}</span>}
-              <span>📍 {user.area}</span>
+              <span>📍 {user.area || "No area set"}</span>
               <span>Joined {joined}</span>
             </p>
             {user.bio ? <p className="profilehead__bio">{user.bio}</p> : <p className="profilehead__bio muted">No bio yet.</p>}
@@ -357,13 +362,19 @@ export default function ProfileBoard() {
         </dl>
         <button type="button" className="profilehead__rewards" onClick={() => setTab("rewards")}>
           <span className="profilehead__level">
-            <strong>Level 4 · Eco Champion</strong>
+            <strong>
+              Level {lv.level} · {lv.name}
+            </strong>
             <span className="profilehead__bar">
-              <span style={{ width: "89%" }} />
+              <span style={{ width: `${lv.percent}%` }} />
             </span>
-            <small>1,420 / 1,600 XP to Level 5</small>
+            <small>
+              {lv.next == null
+                ? `${lv.score.toLocaleString("en-US")} XP · top level`
+                : `${lv.score.toLocaleString("en-US")} / ${lv.next.toLocaleString("en-US")} XP to Level ${lv.level + 1}`}
+            </small>
           </span>
-          <span className="profilehead__pill">🌿 1,420 Eco Score</span>
+          <span className="profilehead__pill">🌿 {lv.score.toLocaleString("en-US")} Eco Score</span>
           <span className="profilehead__pill">🪙 {user.ecoCoins.toLocaleString("en-US")} Eco Coins</span>
           <span className="profilehead__pill">🏅 3 / 6 badges</span>
         </button>

@@ -71,8 +71,8 @@ export default function ShopBoard() {
               </>
             ) : (
               <>
-                <strong>🪙 380</strong>
-                <p>New members start with 380 Eco Coins. Join missions and report problems to earn more.</p>
+                <strong>🪙 0</strong>
+                <p>Earn Eco Coins by joining missions and reporting problems, then spend them here.</p>
                 <a href="/sign-in?mode=signup&next=%2Fshop" className="text-link">
                   Create a free account →
                 </a>
