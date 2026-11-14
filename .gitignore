@@ -11,3 +11,4 @@ data/
 
 # copied at build time from node_modules (scripts/copy-maplibre-worker.mjs)
 public/vendor/
+*.tsbuildinfo

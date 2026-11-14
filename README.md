@@ -45,11 +45,11 @@ Check the connection at **`GET /api/health`** → `{ ok, database: "postgres" | 
 - `app/(app)/` – citizen app (sign-in required): `/feed` (home after sign-in), `/profile` (incl. Rewards tab; `/rewards` redirects there), `/reports`, `/missions`, `/rewards`, `/assistant`
 - `app/(auth)/sign-in/` – sign in / sign up (`?mode=signup`)
 - `app/api/` – REST API (below)
-- `lib/server/` – server-only code: `db.js` (Postgres/PGlite + schema + seed), `data.js` (queries),
-  `auth.js` (session → user, route wrapper), `password.js` (scrypt), `redis.js` (rate limits)
-- `lib/auth-actions.js` – sign-in / sign-up / sign-out server actions
-- `lib/api-client.js`, `lib/app-state.js` – browser data hooks that call the API
-- `proxy.js` – redirects signed-out visitors away from app pages
+- `lib/server/` – server-only code: `db.ts` (Postgres/PGlite + schema + seed), `data.ts` (queries),
+  `auth.ts` (session → user, route wrapper), `password.ts` (scrypt), `redis.ts` (rate limits)
+- `lib/auth-actions.ts` – sign-in / sign-up / sign-out server actions
+- `lib/api-client.ts`, `lib/app-state.ts` – browser data hooks that call the API
+- `proxy.ts` – redirects signed-out visitors away from app pages
 - `components/` – UI; `components/site/` – public-site components and content
 
 ## REST API
@@ -101,6 +101,6 @@ Errors come back as `{ "error": "message" }` with a matching status (400, 401, 4
 
 ## Not built yet
 
-- The assistant uses Claude when `ANTHROPIC_API_KEY` is set (falls back to the rules in `lib/assistant.js` otherwise or on errors); readings are still sample data, not live sensors.
+- The assistant uses Claude when `ANTHROPIC_API_KEY` is set (falls back to the rules in `lib/assistant.ts` otherwise or on errors); readings are still sample data, not live sensors.
 - Report status changes (review → resolved), XP and badges have no admin tools yet; Rewards numbers are sample data.
 - Contact and newsletter forms on the public site only show a confirmation.
