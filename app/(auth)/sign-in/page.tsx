@@ -92,7 +92,7 @@ export default async function SignInPage({ searchParams }: { searchParams: Promi
             <p className="login-description">
               {signup
                 ? "Join your neighbours in keeping Bangladesh clean and green."
-                : "Sign in to your citizen or organizer account."}
+                : "Sign in to your citizen, organizer or partner account."}
             </p>
             {askedForApp && (
               <p className="login-notice" role="status">

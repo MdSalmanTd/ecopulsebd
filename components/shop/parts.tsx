@@ -5,14 +5,18 @@ import Link from "next/link";
 import { useState, type CSSProperties } from "react";
 import { addToCart, cartItems, setQty, useCart, useShop } from "@/lib/cart";
 import { MAX_QTY, taka, type Partner, type Product, type Voucher } from "@/lib/shop";
-import { unsplash } from "@/components/site/Photo";
 import { useSignedIn } from "@/lib/useUser";
+
+// Starter product photos are saved locally (public/images/products/<unsplash id>-<480|960>.jpg) so they load offline.
+// Partner-uploaded photos are already a URL path ("/api/shop/products/<id>/photo").
+const productSrc = (photo: string, px: number) =>
+  photo.startsWith("/") ? photo : `/images/products/${photo}-${px > 480 ? 960 : 480}.jpg`;
 
 export function ProductPhoto({ photo, alt, size = 480 }: { photo: string; alt: string; size?: number }) {
   return (
     <img
-      src={unsplash(photo, size, size)}
-      srcSet={`${unsplash(photo, size, size)} 1x, ${unsplash(photo, size * 2, size * 2)} 2x`}
+      src={productSrc(photo, size)}
+      srcSet={`${productSrc(photo, size)} 1x, ${productSrc(photo, size * 2)} 2x`}
       alt={alt}
       loading="lazy"
       decoding="async"

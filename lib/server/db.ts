@@ -121,8 +121,11 @@ ALTER TABLE users ALTER COLUMN area SET DEFAULT '';
 ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar BYTEA;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_type TEXT;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS photo_version INTEGER NOT NULL DEFAULT 0;
+-- Partners (shop sellers) manage one store's products. users_role_check (citizen/organizer only)
+-- is replaced by users_role_v2.
+ALTER TABLE users DROP CONSTRAINT IF EXISTS users_role_check;
 DO $$ BEGIN
-  ALTER TABLE users ADD CONSTRAINT users_role_check CHECK (role IN ('citizen', 'organizer'));
+  ALTER TABLE users ADD CONSTRAINT users_role_v2 CHECK (role IN ('citizen', 'organizer', 'partner'));
 EXCEPTION WHEN duplicate_object THEN NULL;
 END $$;
 
@@ -257,12 +260,23 @@ CREATE TABLE IF NOT EXISTS partner_applications (
   status     TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','approved','declined')),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- The store a partner account manages (only set for role = 'partner').
+ALTER TABLE users ADD COLUMN IF NOT EXISTS partner_id TEXT REFERENCES partners(id) ON DELETE SET NULL;
+
+-- Partner-managed products: an uploaded photo (served from /api/shop/products/:id/photo) and a
+-- switch to hide a product from the shop without deleting it (past orders still name it).
+ALTER TABLE products ADD COLUMN IF NOT EXISTS image BYTEA;
+ALTER TABLE products ADD COLUMN IF NOT EXISTS image_type TEXT;
+ALTER TABLE products ADD COLUMN IF NOT EXISTS active BOOLEAN NOT NULL DEFAULT true;
+ALTER TABLE vouchers ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ NOT NULL DEFAULT now();
 `;
 
 // Demo account so the app has data out of the box (disable with SEED_DEMO=false).
 export const DEMO_LOGIN = "nadia@example.com";
 export const DEMO_PASSWORD = "ecopulse123";
 export const DEMO_ORGANIZER_LOGIN = "tanvir@example.com";
+export const DEMO_PARTNER_LOGIN = "bamboo@example.com";
 
 /** A database row. Columns come straight from SQL, so they are loosely typed. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -479,6 +493,13 @@ async function seed(db: Db) {
       [org[0].id],
     );
   }
+
+  // Demo partner: manages the Bamboo & Co. store in the Eco Shop.
+  await db.query(
+    `INSERT INTO users (name, login, password_hash, role, organization, partner_id)
+     VALUES ($1, $2, $3, 'partner', $4, $5) ON CONFLICT (login) DO NOTHING`,
+    ["Rumana Chowdhury", DEMO_PARTNER_LOGIN, hashPassword(DEMO_PASSWORD), "Bamboo & Co.", "bamboo-bd"],
+  );
 
   const created = await db.query(
     `INSERT INTO users (name, login, password_hash) VALUES ($1, $2, $3)

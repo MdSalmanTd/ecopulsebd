@@ -2849,3 +2849,65 @@ body:has(.helpbeacon) .toast {
     bottom: 150px;
   }
 }
+
+/* ---------- Partner dashboard ---------- */
+.partner { display: grid; gap: 16px; min-width: 0; }
+.partner__sub { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+.partner__card .muted { color: var(--muted); font-size: 12px; }
+.pprod-list, .porder-list { list-style: none; margin: 0; padding: 0; }
+.pprod { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+.pprod:first-child { border-top: 0; }
+.pprod__photo img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; display: block; }
+.pprod__info { min-width: 0; display: grid; gap: 3px; }
+.pprod__info strong { font-size: 14px; }
+.pprod__info small { color: var(--muted); font-size: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.pprod__form { display: flex; align-items: flex-end; gap: 8px; }
+.pprod__form label { display: grid; gap: 3px; font-size: 11px; font-weight: 600; color: var(--muted); }
+.pprod__form input { width: 88px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-size: 13px; color: var(--text); background: #fff; }
+.pprod__form button:disabled { opacity: 0.45; cursor: default; }
+.porder { padding: 12px 0; border-top: 1px solid var(--line); }
+.porder:first-child { border-top: 0; }
+.porder--cancelled { opacity: 0.6; }
+.porder__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.porder__head small { color: var(--muted); font-size: 12px; }
+.porder__total { margin-left: auto; font-size: 14px; }
+.porder__items { list-style: none; margin: 8px 0 0; padding: 0; font-size: 13px; display: grid; gap: 3px; }
+.porder__items li { display: flex; justify-content: space-between; gap: 12px; }
+.porder__items span { color: var(--muted); }
+.porder__ship { margin-top: 8px; font-size: 13px; }
+.porder__ship summary { cursor: pointer; color: var(--green-700); font-weight: 600; font-size: 12px; }
+.porder__ship p { margin: 6px 0 0; color: var(--text); line-height: 1.5; }
+@media (max-width: 640px) {
+  .pprod { grid-template-columns: 48px 1fr; }
+  .pprod__photo img { width: 48px; height: 48px; }
+  .pprod__form { grid-column: 1 / -1; }
+  .pprod__form input { width: 100%; }
+  .pprod__form label { flex: 1; }
+}
+.partner__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+.partner__head h3 { margin: 0 0 2px; }
+.pprod--hidden .pprod__photo, .pprod--hidden .pprod__info { opacity: 0.55; }
+.pprod__form { flex-wrap: wrap; justify-content: flex-end; }
+.pvoucher-list { list-style: none; margin: 0; padding: 0; }
+.pvoucher { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+.pvoucher:first-child { border-top: 0; }
+.pvoucher--off { opacity: 0.6; }
+.pvoucher__pct { width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center; background: var(--green-100); color: var(--green-700); font-weight: 700; font-size: 16px; }
+.pvoucher__info { min-width: 0; display: grid; gap: 3px; }
+.pvoucher__info strong { font-size: 14px; }
+.pvoucher__info code { margin-left: 4px; padding: 1px 6px; border: 1px dashed var(--line); border-radius: 6px; font-size: 11px; color: var(--muted); }
+.pvoucher__info small { color: var(--muted); font-size: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.pform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pform label small { color: var(--muted); font-weight: 400; }
+.pform-note { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.pform-check { display: flex !important; flex-direction: row; align-items: center; gap: 8px; }
+.pform-check input { width: auto; }
+.pphoto-pick { position: relative; display: grid; place-items: center; width: 120px; height: 120px; border: 1px dashed var(--line); border-radius: 12px; overflow: hidden; color: var(--muted); font-size: 12px; font-weight: 500; cursor: pointer; }
+.pphoto-pick img { width: 100%; height: 100%; object-fit: cover; }
+.pphoto-pick input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+@media (max-width: 640px) {
+  .pvoucher { grid-template-columns: 48px 1fr; }
+  .pvoucher__pct { width: 48px; height: 48px; font-size: 14px; }
+  .pvoucher > .btn { grid-column: 1 / -1; justify-self: start; }
+  .pform-row { grid-template-columns: 1fr; }
+}

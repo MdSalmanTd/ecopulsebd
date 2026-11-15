@@ -859,6 +859,18 @@ body.site {
   display: grid;
   place-items: center;
 }
+.voices__portrait--photo {
+  position: relative;
+  overflow: hidden;
+}
+.voices__portrait--photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
 .voices__portrait span {
   width: 120px;
   height: 120px;

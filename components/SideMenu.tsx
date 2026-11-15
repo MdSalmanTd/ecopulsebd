@@ -14,7 +14,7 @@ export default function SideMenu({ active }: SideMenuProps) {
   const t = useT();
   const { joined } = useMissions();
   const { reports } = useReports();
-  const { isOrganizer } = useMe();
+  const { isOrganizer, user } = useMe();
   const openReports = reports.filter((r: Report) => r.status !== "resolved").length;
 
   const items = [
@@ -28,6 +28,8 @@ export default function SideMenu({ active }: SideMenuProps) {
     { key: "assistant", href: "/assistant", label: "Ask the assistant" },
     // Only organizers can create missions.
     ...(isOrganizer ? [{ key: "tools", href: "/missions?create=1", label: "Organizer tools", icon: "/icons/tool.svg" }] : []),
+    // Partners manage their Eco Shop store.
+    ...(user?.role === "partner" ? [{ key: "partner", href: "/partner", label: "Partner dashboard", icon: "/icons/gift.svg" }] : []),
   ];
 
   return (

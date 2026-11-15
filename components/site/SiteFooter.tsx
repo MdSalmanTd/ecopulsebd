@@ -46,8 +46,8 @@ export default function SiteFooter() {
           <div className="sfoot__brand">
             <Logo light />
             <p>
-              Citizen-powered environmental action for Bangladesh. Know your air, flag
-              problems, and act with your neighbours.
+              Citizen-powered environmental action for Bangladesh. Know your
+              air, flag problems, and act with your neighbours.
             </p>
           </div>
           <div className="sfoot__news">
@@ -85,13 +85,8 @@ export default function SiteFooter() {
         </div>
 
         <div className="sfoot__bottom">
-          <span>© {new Date().getFullYear()} EcoPulse BD. All rights reserved.</span>
           <span>
-            Photos from{" "}
-            <a href="https://unsplash.com/?utm_source=ecopulse_bd&utm_medium=referral" target="_blank" rel="noopener">
-              Unsplash
-            </a>
-            . Guidance only — follow official alerts from BWDB and local authorities.
+            © {new Date().getFullYear()} EcoPulse BD. All rights reserved.
           </span>
         </div>
       </div>

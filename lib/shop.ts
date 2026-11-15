@@ -27,7 +27,7 @@ export interface Product {
   /** Price in taka. */
   price: number;
   unit: string;
-  /** images.unsplash.com photo id */
+  /** images.unsplash.com photo id (seeded products), or a URL path starting with "/" (uploaded photo). */
   photo: string;
   partnerId: string;
   partnerName: string;
@@ -97,6 +97,60 @@ export interface ShopResponse {
   /** The signed-in user's Eco Coin balance; null when signed out. */
   coins: number | null;
 }
+
+// ---------- Partner dashboard ----------
+
+/** A product in the partner's own store, with how many units have sold (cancelled orders excluded). */
+export interface PartnerProduct extends Product {
+  sold: number;
+  /** false = hidden from the shop. */
+  active: boolean;
+}
+
+/** One of the partner's vouchers, with how often shoppers claimed and used it. */
+export interface PartnerVoucher {
+  code: string;
+  title: string;
+  percent: number;
+  minSpend: number;
+  maxDiscount: number | null;
+  coinCost: number;
+  inStore: boolean;
+  active: boolean;
+  claims: number;
+  uses: number;
+}
+
+/** An order as a partner sees it: only the lines from their store. */
+export interface PartnerOrder {
+  id: string;
+  createdAt: string;
+  status: "placed" | "cancelled";
+  payment: PaymentMethod;
+  paid: boolean;
+  items: OrderItem[];
+  /** Price × qty of this partner's lines, before vouchers and coins. */
+  subtotal: number;
+  name: string;
+  phone: string;
+  address: string;
+}
+
+export interface PartnerDashboard {
+  partner: Partner;
+  products: PartnerProduct[];
+  vouchers: PartnerVoucher[];
+  orders: PartnerOrder[];
+  stats: { revenue: number; unitsSold: number; orders: number; lowStock: number };
+}
+
+/** Stock at or below this shows as "low" on the partner dashboard. */
+export const LOW_STOCK = 10;
+export const MAX_PRICE = 100000;
+export const MAX_STOCK = 10000;
+/** Limits for partner-created vouchers. */
+export const VOUCHER_PERCENT = { min: 5, max: 70 };
+export const MAX_COIN_COST = 5000;
 
 export interface CartLine {
   id: string;

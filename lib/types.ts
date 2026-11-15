@@ -1,6 +1,6 @@
 // Shared domain types: the JSON shapes the API returns and the client consumes.
 
-export type Role = "citizen" | "organizer";
+export type Role = "citizen" | "organizer" | "partner";
 
 /** A user row as returned by getUser() (server-side). */
 export interface User {
@@ -9,6 +9,8 @@ export interface User {
   login: string;
   role: Role;
   organization: string | null;
+  /** The shop store a partner account manages. */
+  partner_id?: string | null;
   bio?: string | null;
   area?: string | null;
   created_at?: string | Date;

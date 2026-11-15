@@ -12,6 +12,7 @@ npm run build && npm start
 Demo accounts (created automatically, disable with `SEED_DEMO=false`), password **ecopulse123**:
 - **nadia@example.com** – citizen
 - **tanvir@example.com** – organizer (Mirpur Green Team)
+- **bamboo@example.com** – partner (manages the Bamboo & Co. store at `/partner`)
 
 ## Account roles
 
@@ -19,10 +20,15 @@ Demo accounts (created automatically, disable with `SEED_DEMO=false`), password 
 | --- | --- |
 | Citizen (default) | post, comment, report problems, join/save missions |
 | Organizer | everything above, plus **create missions** (`POST /api/missions` returns 403 for citizens) |
+| Partner | everything a citizen can, plus the **partner dashboard** (`/partner`): sales, orders for their store's items, **add products** (with photo), edit price/stock, hide/show products, and **create vouchers** and turn them on/off |
 
 People choose the role at sign-up (`/sign-in?mode=signup&type=organizer` preselects Organizer).
 Organizers must give a group/organisation name. To change someone's role later:
 `UPDATE users SET role = 'organizer', organization = '…' WHERE login = '…';`
+
+Partner accounts can't be chosen at sign-up (anyone could claim a store). After approving a
+"Be our partner" application, link an existing account to the store:
+`UPDATE users SET role = 'partner', partner_id = 'bamboo-bd', organization = 'Bamboo & Co.' WHERE login = '…';`
 
 ## Environment
 

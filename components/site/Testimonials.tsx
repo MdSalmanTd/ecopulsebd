@@ -4,12 +4,15 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { ArrowRight } from "./ui";
 
 // Sample voices for the design — replace with real community quotes.
+// `photo` is a square portrait in public/images/voices/ (shown with the person's consent).
+// If the file is missing or fails to load, the coloured initials badge is shown instead.
 const QUOTES = [
   {
     text: "I reported a blocked drain on my lane on a Monday. By Thursday the ward team had cleared it, and I could follow every step in the app.",
     name: "Farhana Akter",
     role: "Resident, West Shewrapara",
     initials: "FA",
+    photo: "/images/voices/farhana.jpg",
     color: "#c4663b",
   },
   {
@@ -17,6 +20,7 @@ const QUOTES = [
     name: "Tanvir Ahmed",
     role: "Teacher, Mirpur 10",
     initials: "TA",
+    photo: "/images/voices/tanvir.jpg",
     color: "#7b5ea7",
   },
   {
@@ -24,6 +28,7 @@ const QUOTES = [
     name: "Sumaiya Islam",
     role: "Organizer, Green Mirpur",
     initials: "SI",
+    photo: "/images/voices/sumaiya.jpg",
     color: "#a8476b",
   },
 ];
@@ -32,6 +37,8 @@ export default function Testimonials() {
   const [i, setI] = useState(0);
   const q = QUOTES[i];
   const [paused, setPaused] = useState(false);
+  const [broken, setBroken] = useState<Record<string, boolean>>({});
+  const showPhoto = q.photo && !broken[q.name];
   const go = (d: number) => setI((v) => (v + d + QUOTES.length) % QUOTES.length);
 
   // Auto-advance every 7s; pauses on hover/focus and for reduced-motion users.
@@ -72,8 +79,18 @@ export default function Testimonials() {
       </div>
 
       <figure className="voices__card" key={i}>
-        <div className="voices__portrait" style={{ "--c": q.color } as CSSProperties}>
-          <span>{q.initials}</span>
+        <div className={`voices__portrait${showPhoto ? " voices__portrait--photo" : ""}`} style={{ "--c": q.color } as CSSProperties}>
+          {showPhoto ? (
+            <img
+              src={q.photo}
+              alt={`Portrait of ${q.name}`}
+              loading="lazy"
+              decoding="async"
+              onError={() => setBroken((b) => ({ ...b, [q.name]: true }))}
+            />
+          ) : (
+            <span>{q.initials}</span>
+          )}
         </div>
         <div className="voices__body">
           <svg className="voices__mark" viewBox="0 0 40 30" aria-hidden="true">

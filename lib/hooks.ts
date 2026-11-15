@@ -37,6 +37,7 @@ const DICT: Record<string, string | undefined> = {
   "My reports": "আমার রিপোর্ট",
   "Ask the assistant": "সহকারীকে জিজ্ঞাসা করুন",
   "Organizer tools": "আয়োজক টুলস",
+  "Partner dashboard": "পার্টনার ড্যাশবোর্ড",
   "Your communities": "আপনার কমিউনিটি",
   "Sign out": "সাইন আউট",
 };

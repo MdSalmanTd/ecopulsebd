@@ -306,7 +306,7 @@ export async function createUser(
 
 export async function getUser(id: number): Promise<UserRecord | null> {
   const [u] = await query<UserRecord>(
-    `SELECT id, name, login, role, organization, bio, area, created_at, photo_version, eco_coins,
+    `SELECT id, name, login, role, organization, partner_id, bio, area, created_at, photo_version, eco_coins,
             (avatar IS NOT NULL) AS has_avatar
      FROM users WHERE id = $1`,
     [id],
@@ -359,7 +359,8 @@ export async function updateProfile(user: User, input: Record<string, unknown>):
   if (user.role === "organizer" && (organization.length < 2 || organization.length > 80)) {
     throw new HttpError(400, "Enter your group or organisation name.");
   }
-  const org = user.role === "organizer" ? organization : null;
+  // Partners keep their store name; only organizers edit theirs here.
+  const org = user.role === "organizer" ? organization : user.role === "partner" ? user.organization : null;
   await tx(async (q) => {
     await q("UPDATE users SET name = $2, bio = $3, area = $4, organization = $5 WHERE id = $1", [user.id, name, bio, area, org]);
     // Names are copied onto posts/comments/missions for display — keep them in sync.

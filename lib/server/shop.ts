@@ -24,7 +24,11 @@ const parseOrderId = (id: string): number => {
   return m ? Number(m[1]) - 10000 : -1;
 };
 
-const toProduct = (r: Row): Product => ({
+/** Product columns for listings (never the uploaded image bytes). Needs `products p JOIN partners pr`. */
+export const PRODUCT_COLS = `p.id, p.name, p.category, p.description, p.price, p.unit, p.photo, p.partner_id,
+  p.stock, p.badge, p.sort, p.active, pr.name AS partner_name`;
+
+export const toProduct = (r: Row): Product => ({
   id: r.id,
   name: r.name,
   category: r.category,
@@ -63,8 +67,8 @@ const VOUCHER_SQL = `
 export async function listShop(userId: number | null): Promise<ShopResponse> {
   const [products, partners, vouchers, me] = await Promise.all([
     query(
-      `SELECT p.*, pr.name AS partner_name FROM products p JOIN partners pr ON pr.id = p.partner_id
-       ORDER BY p.sort, p.name`,
+      `SELECT ${PRODUCT_COLS} FROM products p JOIN partners pr ON pr.id = p.partner_id
+       WHERE p.active ORDER BY p.sort, p.name`,
     ),
     query<Partner>("SELECT id, name, kind, blurb, area, color FROM partners ORDER BY created_at, name"),
     query(`${VOUCHER_SQL} WHERE v.active ORDER BY v.sort, v.code`, [userId]),
@@ -179,13 +183,13 @@ export async function createOrder(user: User, input: Record<string, unknown>): P
     const items: OrderItem[] = [];
     for (const l of lines) {
       const [p] = await q(
-        `UPDATE products SET stock = stock - $2 WHERE id = $1 AND stock >= $2
+        `UPDATE products SET stock = stock - $2 WHERE id = $1 AND active AND stock >= $2
          RETURNING id, name, price, photo, partner_id`,
         [l.id, l.qty],
       );
       if (!p) {
-        const [left] = await q("SELECT name, stock FROM products WHERE id = $1", [l.id]);
-        if (!left) throw new HttpError(400, "An item in your cart is no longer sold. Remove it and try again.");
+        const [left] = await q("SELECT name, stock, active FROM products WHERE id = $1", [l.id]);
+        if (!left || !left.active) throw new HttpError(400, "An item in your cart is no longer sold. Remove it and try again.");
         throw new HttpError(409, left.stock ? `Only ${left.stock} of “${left.name}” left.` : `“${left.name}” is sold out.`);
       }
       items.push({ id: p.id, name: p.name, price: p.price, qty: l.qty, photo: p.photo, partnerId: p.partner_id });

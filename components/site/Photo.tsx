@@ -1,5 +1,5 @@
-// Photos served from the Unsplash CDN (free to use under the Unsplash License).
-// Each entry is the images.unsplash.com photo id plus alt text describing the picture.
+// Photos from Unsplash (free to use under the Unsplash License), saved locally in
+// public/images/photos/<name>-<width>.jpg so they load offline. `id` is the original Unsplash photo id.
 
 export const PHOTOS = {
   delta: { id: "1497436072909-60f360e1d4b1", alt: "Aerial view of dense green forest meeting turquoise water" },
@@ -29,7 +29,8 @@ export const PHOTOS = {
 export const unsplash = (id: string, w: number, h?: number) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=70&w=${w}${h ? `&h=${h}` : ""}`;
 
-const WIDTHS = [480, 800, 1200, 1600, 2000];
+const WIDTHS = [800, 1200, 1600];
+const local = (name: string, w: number) => `/images/photos/${name}-${w}.jpg`;
 
 /**
  * Responsive cover photo. Fills its (positioned or sized) parent.
@@ -47,12 +48,13 @@ interface PhotoProps {
 }
 
 export default function Photo({ name, sizes = "100vw", priority = false, className = "" }: PhotoProps) {
-  const p = PHOTO_LOOKUP[name] ?? PHOTOS.forest;
+  const key = PHOTO_LOOKUP[name] ? name : "forest";
+  const p = PHOTO_LOOKUP[key]!;
   return (
     <img
       className={`photo ${className}`}
-      src={unsplash(p.id, 1200)}
-      srcSet={WIDTHS.map((w) => `${unsplash(p.id, w)} ${w}w`).join(", ")}
+      src={local(key, 1200)}
+      srcSet={WIDTHS.map((w) => `${local(key, w)} ${w}w`).join(", ")}
       sizes={sizes}
       alt={p.alt}
       loading={priority ? "eager" : "lazy"}
