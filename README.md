@@ -32,7 +32,11 @@ All in [`projectdata/`](projectdata/):
 | [UML diagrams](projectdata/UML%20DIAGRAMS.pdf) | ER, use case, sequence (report, mission), state (report, mission), class, DFD level 0 and 1 |
 | [Project report](projectdata/EcoPulse_BD_Project%20report_035_036_133_138.pdf) | Requirements traceability, design, implementation, testing and future work |
 | [Testing report](projectdata/EcoPulse_BD_Testing%20report_035_036_133_138.pdf) | 83-case manual test plan and first-round results |
-| [Screen recording](projectdata/screenrecord/ecopulsebd.mp4) | Walkthrough of the app |
+| [Presentation (Google Drive)](https://drive.google.com/drive/folders/1H08AdMNgVPr1XI2B8m_yTACkdSFx0RFu) | Project presentation slides |
+| [Screen recording (Google Drive)](https://drive.google.com/drive/folders/1H08AdMNgVPr1XI2B8m_yTACkdSFx0RFu) | Walkthrough of the app |
+
+The presentation and screen recording are too large for GitHub (over 100 MB each), so they are
+kept in this [Google Drive folder](https://drive.google.com/drive/folders/1H08AdMNgVPr1XI2B8m_yTACkdSFx0RFu).
 
 ## The problem
 
@@ -139,7 +143,7 @@ Check the connection at **`GET /api/health`** → `{ ok, database: "postgres" | 
 - `proxy.ts` – redirects signed-out visitors away from app pages
 - `components/` – UI; `components/site/` – public-site components and content; `components/shop/` – shop
 - `public/images/` – logos, illustrations and photos (stored locally so pages work offline)
-- `projectdata/` – proposal, SRS, UML diagrams, project and testing reports, screen recording
+- `projectdata/` – proposal, SRS, UML diagrams, project and testing reports (presentation and screen recording are on Google Drive)
 
 ## REST API
 
