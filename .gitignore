@@ -12,3 +12,7 @@ data/
 # copied at build time from node_modules (scripts/copy-maplibre-worker.mjs)
 public/vendor/
 *.tsbuildinfo
+
+# large media (exceeds GitHub 100MB limit)
+projectdata/EcoPulse_BD_Presentation.pptx
+projectdata/screenrecord/ecopulsebd.mp4
