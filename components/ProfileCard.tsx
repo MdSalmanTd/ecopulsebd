@@ -24,7 +24,7 @@ export default function ProfileCard() {
         <div>
           <strong>{name}</strong>
           <small>{isOrganizer ? user?.organization || "Organizer" : subtitle}</small>
-          {user && <span className={`role-tag${isOrganizer ? " role-tag--org" : ""}`}>{isOrganizer ? "Organizer" : "Citizen"}</span>}
+          {user && <span className={`role-tag${isOrganizer || user?.role === "partner" ? " role-tag--org" : ""}`}>{isOrganizer ? "Organizer" : user?.role === "partner" ? "Partner" : "Citizen"}</span>}
         </div>
       </div>
       <div className="level">

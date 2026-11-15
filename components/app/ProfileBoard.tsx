@@ -324,7 +324,7 @@ export default function ProfileBoard() {
           <div className="profilehead__info">
             <h1>{user.name}</h1>
             <p className="profilehead__sub">
-              <span className={`role-tag${isOrganizer ? " role-tag--org" : ""}`}>{isOrganizer ? "Organizer" : "Citizen"}</span>
+              <span className={`role-tag${isOrganizer || user?.role === "partner" ? " role-tag--org" : ""}`}>{isOrganizer ? "Organizer" : user?.role === "partner" ? "Partner" : "Citizen"}</span>
               {isOrganizer && user.organization && <span>{user.organization}</span>}
               <span>📍 {user.area || "No area set"}</span>
               <span>Joined {joined}</span>
